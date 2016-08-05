@@ -20,4 +20,8 @@ app.get('/aws_files', (req, res) => {
   });
 });
 
+app.post('/archive', (req, res) => {
+  res.json({ success: true });
+});
+
 app.listen(process.env.PORT || 8000);

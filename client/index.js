@@ -1,24 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import request from 'axios';
 import Backbone from 'backbone';
 
 import Layout from './components/layout';
 import AWSFilesList from './components/aws_files_list';
 import Downloader from './components/downloader';
 
+import { fetchObjects } from './api/aws';
+
 var files = new Backbone.Collection();
 
-request.get(
-  '/aws_files',
-  {
-    params: {
-      Bucket: 'coding-challenges', Prefix: 'file_archiving/small_project'
-    }
-  }
-).then((response) => {
+fetchObjects().then((response) => {
   files.add(response.data.files);
 });
+
 
 const render = () => {
   ReactDOM.render(
