@@ -62,9 +62,17 @@
 
 	var _backbone2 = _interopRequireDefault(_backbone);
 
+	var _layout = __webpack_require__(201);
+
+	var _layout2 = _interopRequireDefault(_layout);
+
 	var _aws_files_list = __webpack_require__(200);
 
 	var _aws_files_list2 = _interopRequireDefault(_aws_files_list);
+
+	var _downloader = __webpack_require__(202);
+
+	var _downloader2 = _interopRequireDefault(_downloader);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -79,7 +87,12 @@
 	});
 
 	var render = function render() {
-	  _reactDom2.default.render(_react2.default.createElement(_aws_files_list2.default, { files: files.toJSON() }), document.getElementById('root'));
+	  _reactDom2.default.render(_react2.default.createElement(
+	    _layout2.default,
+	    null,
+	    _react2.default.createElement(_aws_files_list2.default, { files: files.toJSON() }),
+	    _react2.default.createElement(_downloader2.default, null)
+	  ), document.getElementById('root'));
 	};
 
 	render();
@@ -36408,7 +36421,7 @@
 	var renderFileRow = function renderFileRow(file_info) {
 	  return _react2.default.createElement(
 	    'tbody',
-	    null,
+	    { key: file_info.Key },
 	    _react2.default.createElement(
 	      'tr',
 	      null,
@@ -36423,6 +36436,66 @@
 	        file_info.Size
 	      )
 	    )
+	  );
+	};
+
+/***/ },
+/* 201 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var child_index = 0;
+
+	exports.default = function (_ref) {
+	  var children = _ref.children;
+
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    children.map(renderChild)
+	  );
+	};
+
+	var renderChild = function renderChild(child) {
+	  return _react2.default.createElement(
+	    'div',
+	    { key: 'child-' + child_index++ },
+	    child
+	  );
+	};
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function () {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'Download!'
 	  );
 	};
 

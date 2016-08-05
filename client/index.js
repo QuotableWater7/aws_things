@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import request from 'axios';
 import Backbone from 'backbone';
 
+import Layout from './components/layout';
 import AWSFilesList from './components/aws_files_list';
+import Downloader from './components/downloader';
 
 var files = new Backbone.Collection();
 
@@ -20,7 +22,10 @@ request.get(
 
 const render = () => {
   ReactDOM.render(
-    <AWSFilesList files={files.toJSON()}/>,
+    <Layout>
+      <AWSFilesList files={files.toJSON()}/>
+      <Downloader/>
+    </Layout>,
     document.getElementById('root')
   );
 };

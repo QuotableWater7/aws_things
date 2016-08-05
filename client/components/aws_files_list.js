@@ -16,7 +16,7 @@ export default ({ files }) => {
 
 const renderFileRow = (file_info) => {
   return (
-    <tbody>
+    <tbody key={file_info.Key}>
       <tr>
         <td>{file_info.Key}</td>
         <td>{file_info.Size}</td>
