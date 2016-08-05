@@ -20,7 +20,10 @@ app.get('/aws_files', (req, res) => {
   });
 });
 
-app.post('/archive', (req, res) => {
+app.post('/aws_archive', (req, res) => {
+  const { Bucket, Prefix, files } = req.query;
+
+
   res.json({ success: true });
 });
 

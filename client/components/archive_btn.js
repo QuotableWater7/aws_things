@@ -1,8 +1,10 @@
 import React from 'react';
 
-export default () => {
+export default ({ display, archive }) => {
+  if (!display) { return null; }
+
   return (
-    <div>
+    <div onClick={archive}>
       Archive!
     </div>
   );
